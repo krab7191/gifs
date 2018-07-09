@@ -18,7 +18,7 @@ header, #search-box, .btn {
     color: blanchedalmond;
 }
 
-.btn {
+#search-button {
     margin-top: 5px;
     border: 2px solid blanchedalmond;
 }
