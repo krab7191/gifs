@@ -8,4 +8,4 @@ A lightweight web-based giphy search client. Search for your favorite topics and
 
 ## Authors
 
-* **Karsten Rabe
+*  __Karsten Rabe
