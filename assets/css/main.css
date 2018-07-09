@@ -1,8 +1,14 @@
+body {
+    background: url(../imgs/bg.gif) blanchedalmond;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 header, #search-box {
     width: 100%;
     padding: 5px;
     /* h-offset v-offset blur spread color */
-    box-shadow: 0 3px 5px 0 #888;
+    box-shadow: 0 1px 8px 2px blanchedalmond;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -11,6 +17,7 @@ header, #search-box, .btn {
     background-color: #0081BC;
     color: blanchedalmond;
 }
+
 .btn {
     margin-top: 5px;
     border: 2px solid blanchedalmond;
