@@ -1,8 +1,5 @@
-
 header, #search-box {
     width: 100%;
-    background-color: #0081BC;
-    color: blanchedalmond;
     padding: 5px;
     /* h-offset v-offset blur spread color */
     box-shadow: 0 3px 5px 0 #888;
@@ -10,6 +7,19 @@ header, #search-box {
     border-bottom-right-radius: 10px;
 }
 
+header, #search-box, .btn {
+    background-color: #0081BC;
+    color: blanchedalmond;
+}
+.btn {
+    margin-top: 5px;
+    border: 2px solid blanchedalmond;
+}
+
 #button-box {
     margin-top: 10px;
+}
+
+input {
+    width: 90%;
 }
