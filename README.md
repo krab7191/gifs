@@ -1,4 +1,11 @@
 # gifs
-A lightweight web-based giphy client built with Bootstrap, jQuery and AJAX. Search for your favorite topics and see the gif results.
+A lightweight web-based giphy search client. Search for your favorite topics and see the top 10 rated results.
 
-@Author Karsten Rabe
+## Built with
+* Bootstrap - https://getbootstrap.com/
+* jQuery - https://jquery.com/
+* Ajax - https://en.wikipedia.org/wiki/Ajax_(programming)
+
+## Authors
+
+* **Karsten Rabe
