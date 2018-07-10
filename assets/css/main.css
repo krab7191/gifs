@@ -47,6 +47,8 @@ input {
 }
 
 #img-box {
+    overflow-y: auto;
+    height: 450px;
     border-radius: 4px;
     background-color: rgba(255, 236, 199, .2);
     /* height: 100%;
