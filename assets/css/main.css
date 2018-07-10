@@ -28,7 +28,7 @@ header, #search-box, #search-button, .btn {
 }
 
 .btn {
-    margin: 0 5px;
+    margin: 5px 5px;
     text-transform: capitalize;
 }
 
@@ -51,8 +51,6 @@ input {
     height: 450px;
     border-radius: 4px;
     background-color: rgba(255, 236, 199, .2);
-    /* height: 100%;
-    width: 100%; */
 }
 
 .img-box {
