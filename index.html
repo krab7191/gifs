@@ -17,22 +17,22 @@
             Giphy Client
         </h1>
         <p class="text-center">
-            Click a button to show gifs of the corresponding topic from the Giphy API. Use the input field to add a button of the topic
+            Click a button to show gifs of the corresponding topic from the Giphy API. Click a gif to toggle animation. Use the input field to add a button of the topic
             of your choice.
         </p>
     </header>
     <div id="button-box" class="row">
-        Buttons
     </div>
     <div id="content" class="row mx-auto">
-        <div class="col-md-10 text-center" id="img-box">
+        <div class="col-md-10 text-center row" id="img-box">
 
         </div>
         <div class="col-md-2 text-center" id="search-box">
             <form>
-                <input type="text" name="search" placeholder="Search GIFs">
-                <button class="btn" id="search-button">Search</button>
+                <input id="search-input" type="text" name="search" placeholder="Search GIFs">
+                <input type="submit" class="btn" id="search-button"></input>
             </form>
+            <button class="btn" id="clear">Clear images</button>
         </div>
     </div>
 
