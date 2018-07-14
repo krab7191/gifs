@@ -28,23 +28,31 @@ $("#search-button").on("click", function (event) {
 });
 
 // Empty the gif container
-$("#clear").on("click", function() {
+$("#clear").on("click", function () {
     $("#img-box").empty();
 });
 
+// Stop all animation
+$("#stop").on('click', function () {
+    var imgs = $(".gif");
+    for (var i = 0; i < imgs.length; i++) {
+        $(imgs[i]).attr("src", $(imgs[i]).attr("data-still"));
+    }
+});
+
 // Preset topics
-var topics = ["metallica", "iron maiden", "drums", "whitesnake"];
+var topics = ["metallica", "iron maiden", "drums", "whitesnake", "guitar", "meshuggah"];
 
 // Request object
 var request = {
     apiKey: "fMBGvCbtPU31pSIvQPvQucGwYkicKgOf",
     baseUrl: "https://api.giphy.com/v1/gifs/search?api_key=",
     amount: 10,
-    send: function(topic) {
+    send: function (topic) {
         $.get({
-            url: this.baseUrl+this.apiKey+"&limit=" + this.amount + "&q=" + topic
+            url: this.baseUrl + this.apiKey + "&limit=" + this.amount + "&q=" + topic
         }).then(function (response) {
-            for (var i=0; i<response.data.length; i++) {
+            for (var i = 0; i < response.data.length; i++) {
                 appendImage(response.data[i]);
             }
         }, function () {
@@ -53,11 +61,11 @@ var request = {
     }
 };
 
+// Create image box on the fly with title, rating, click handlers, etc.
 function appendImage(responseObject) {
-    console.log(responseObject);
     var $d = $("<div>");
     $d.addClass('img-box').addClass("col-md-3");
-    $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images.fixed_height_small.url).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
+    $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images.original.url).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
     $d.append($("<a>").attr("href", responseObject.url).attr("target", "_blank").html("Title: " + responseObject.title));
     $d.append($("<p>").html("Rating: " + responseObject.rating));
     $("#img-box").append($d);
@@ -75,7 +83,7 @@ function createButton(text) {
 }
 
 // Pre-attach click handlers to incoming gifs (to toggle animation)
-$(document.body).on('click', ".gif", function() {
+$(document.body).on('click', ".gif", function () {
     var $img = $(this);
     if ($img.attr("data-state") == "still") {
         $img.attr("src", $img.attr("data-animated"));

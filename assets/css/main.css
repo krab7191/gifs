@@ -32,7 +32,7 @@ header, #search-box, #search-button, .btn {
     text-transform: capitalize;
 }
 
-#search-button, #clear {
+#search-button, #clear, #stop {
     margin-top: 5px;
     border: 2px solid blanchedalmond;
 }
