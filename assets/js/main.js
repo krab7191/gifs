@@ -57,7 +57,7 @@ function appendImage(responseObject) {
     console.log(responseObject);
     var $d = $("<div>");
     $d.addClass('img-box').addClass("col-md-3");
-    $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
+    $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images.fixed_height_small.url).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
     $d.append($("<a>").attr("href", responseObject.url).attr("target", "_blank").html("Title: " + responseObject.title));
     $d.append($("<p>").html("Rating: " + responseObject.rating));
     $("#img-box").append($d);
@@ -76,7 +76,7 @@ function createButton(text) {
 
 // Pre-attach click handlers to incoming gifs (to toggle animation)
 $(document.body).on('click', ".gif", function() {
-    var $img = $this;
+    var $img = $(this);
     if ($img.attr("data-state") == "still") {
         $img.attr("src", $img.attr("data-animated"));
         $img.attr("data-state", "animated");
