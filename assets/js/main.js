@@ -27,12 +27,13 @@ $("#search-button").on("click", function (event) {
     }, 500);
 });
 
+// Empty the gif container
 $("#clear").on("click", function() {
     $("#img-box").empty();
 });
 
 // Preset topics
-var topics = ["metallica", "iron maiden"];
+var topics = ["metallica", "iron maiden", "drums", "whitesnake"];
 
 // Request object
 var request = {
@@ -53,9 +54,10 @@ var request = {
 };
 
 function appendImage(responseObject) {
+    console.log(responseObject);
     var $d = $("<div>");
     $d.addClass('img-box').addClass("col-md-3");
-    $d.append($("<img>").attr("src", responseObject.images.downsized_still.url));
+    $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
     $d.append($("<a>").attr("href", responseObject.url).attr("target", "_blank").html("Title: " + responseObject.title));
     $d.append($("<p>").html("Rating: " + responseObject.rating));
     $("#img-box").append($d);
@@ -71,3 +73,15 @@ function createButton(text) {
     });
     $("#button-box").append($b);
 }
+
+// Pre-attach click handlers to incoming gifs (to toggle animation)
+$(document.body).on('click', ".gif", function() {
+    var $img = $this;
+    if ($img.attr("data-state") == "still") {
+        $img.attr("src", $img.attr("data-animated"));
+        $img.attr("data-state", "animated");
+    } else {
+        $img.attr("src", $img.attr("data-still"));
+        $img.attr("data-state", "still");
+    }
+});
