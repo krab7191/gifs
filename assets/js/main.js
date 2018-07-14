@@ -53,8 +53,20 @@ var request = {
             url: this.baseUrl + this.apiKey + "&limit=" + this.amount + "&q=" + topic
         }).then(function (response) {
             for (var i = 0; i < response.data.length; i++) {
-                appendImage(response.data[i]);
+                appendImage(response.data[i], i);
             }
+            // Show where the new images start
+            $("#" + response.data[0].id).css("background-color", "green");
+            // Scroll down the img container
+            $("#img-box").animate({
+                scrollTop: $("#img-box").scrollTop() + $("#" + response.data[0].id).position().top
+            }, "slow", function() {
+                setTimeout(function () {
+                    // Then remove the background color
+                    $("#" + response.data[0].id).css("background-color", "rgba(255, 236, 199, 0.6)");
+                }, 500);
+            });
+
         }, function () {
             alert("Please check your internet connection");
         });
@@ -62,8 +74,11 @@ var request = {
 };
 
 // Create image box on the fly with title, rating, click handlers, etc.
-function appendImage(responseObject) {
+function appendImage(responseObject, which) {
     var $d = $("<div>");
+    if (which == 0) {
+        $d.attr("id", responseObject.id);
+    }
     $d.addClass('img-box').addClass("col-md-3");
     $d.append($("<img>").addClass('gif').attr("src", responseObject.images.downsized_still.url).attr("data-animated", responseObject.images.original.url).attr("data-still", responseObject.images.downsized_still.url).attr("data-state", "still"));
     $d.append($("<a>").attr("href", responseObject.url).attr("target", "_blank").html("Title: " + responseObject.title));
