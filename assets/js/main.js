@@ -55,23 +55,27 @@ var request = {
             for (var i = 0; i < response.data.length; i++) {
                 appendImage(response.data[i], i);
             }
-            // Show where the new images start
-            $("#" + response.data[0].id).css("background-color", "green");
-            // Scroll down the img container
-            $("#img-box").animate({
-                scrollTop: $("#img-box").scrollTop() + $("#" + response.data[0].id).position().top
-            }, "slow", function() {
-                setTimeout(function () {
-                    // Then remove the background color
-                    $("#" + response.data[0].id).css("background-color", "rgba(255, 236, 199, 0.6)");
-                }, 500);
-            });
+            scrollToNew(response.data[0].id);
 
         }, function () {
             alert("Please check your internet connection");
         });
     }
 };
+
+function scrollToNew(id) {
+    // Show where the new images start
+    $("#" + id).css("background-color", "green");
+    // Scroll down the img container
+    $("#img-box").animate({
+        scrollTop: $("#img-box").scrollTop() + $("#" + id).position().top
+    }, "slow", function () {
+        setTimeout(function () {
+            // Then remove the background color
+            $("#" + id).css("background-color", "rgba(255, 236, 199, 0.6)");
+        }, 500);
+    });
+}
 
 // Create image box on the fly with title, rating, click handlers, etc.
 function appendImage(responseObject, which) {
