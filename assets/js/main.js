@@ -41,7 +41,7 @@ $("#stop").on('click', function () {
 });
 
 // Preset topics
-var topics = ["metallica", "iron maiden", "drums", "whitesnake", "guitar", "meshuggah"];
+var topics = ["metallica", "iron maiden", "drums", "whitesnake", "guitar", "meshuggah", "black sabbath", "thrash metal", "mosh pit", "motorhead", "djent", "pantera"];
 
 // Request object
 var request = {
@@ -52,6 +52,7 @@ var request = {
         $.get({
             url: this.baseUrl + this.apiKey + "&limit=" + this.amount + "&q=" + topic
         }).then(function (response) {
+            console.log(response.data[0]);
             for (var i = 0; i < response.data.length; i++) {
                 appendImage(response.data[i], i);
             }
